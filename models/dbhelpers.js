@@ -16,6 +16,7 @@ module.exports = {
 
 ///////////////////USERS////////////////
 async function add(user) {
+    // return await db('users').insert(user, ['id', 'wallet'])
     return await db('users').insert(user, ['id', 'wallet'])
 }
 
@@ -34,23 +35,27 @@ function removeWallet(wallet) {
     .where({ wallet })
     .del()
 }
-function UPDATE_UST_BALANCE(wallet, changes) {
-    return (
-        db('users')
-        .where({ wallet })
-        .update( changes, [wallet] )
-    )
+async function UPDATE_UST_BALANCE(wallet, changes) {
+    // return (
+    //     db('users')
+    //     .where({ wallet })
+    //     .update( changes, [wallet] )
+    // )
+
+
+    return await db('users').where({ wallet}).update(changes, ['id', 'wallet'])
 }
 
 ////////////////TRANSACTION//////////////////////////
 
 //////////////////////////////////////////////
 async function ADD_TRANSACTION(transaction, user_id) {
-    const [id] = await db('transactions')
-    .where({ user_id })
-    .insert(transaction)
+    // const [id] = await db('transactions')
+    // .where({ user_id })
+    // .insert(transaction)
 
-    return FIND_TRANSACTION(id)
+    // return FIND_TRANSACTION(id)
+    return await db('transactions').where({ user_id }).insert(transaction, ['id'])
 }
 
 function FIND_TRANSACTION(id){
