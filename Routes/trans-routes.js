@@ -30,7 +30,7 @@ router.post('/:wallet/transactions', (req, res)=> {
                 res.status(400).json({ message: "Must provide all fields, transaction_type, amount, txHash"})
             }
 
-            Users.addTransaction(transaction, id)
+            Users.ADD_TRANSACTION(transaction, id)
             .then(trans => {
                 if(trans) {
                     res.status(200).json( trans )

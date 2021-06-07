@@ -1,7 +1,4 @@
 // where we write our knex queries
-// const knex = require('knex')
-// const config = require('../knexfile')
-// const db = knex(config.development)
 const db = require('../dbConfig')
 
 module.exports = {
@@ -9,7 +6,7 @@ module.exports = {
     find,
     findByWallet,
     removeWallet,
-    addTransaction,
+    ADD_TRANSACTION,
     GET_ALL_TRANSACTIONS,
     GET_ALL_TRANSACTION_WALLET,
     GET_ALL_TRANSACTION_WHERE,
@@ -48,7 +45,7 @@ function UPDATE_UST_BALANCE(wallet, changes) {
 ////////////////TRANSACTION//////////////////////////
 
 //////////////////////////////////////////////
-async function addTransaction(transaction, user_id) {
+async function ADD_TRANSACTION(transaction, user_id) {
     const [id] = await db('transactions')
     .where({ user_id })
     .insert(transaction)
