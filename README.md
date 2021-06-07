@@ -11,5 +11,5 @@ npm install --save-dev nodemon
 knex migrate:make create-anchor-table
 knex migrate:make
 
-## Test Insomonia
+## Test with Insomonia
 
