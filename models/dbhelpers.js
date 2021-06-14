@@ -74,7 +74,7 @@ function GET_ALL_TRANSACTION_WALLET(wallet) {
 }
 
 function GET_ALL_TRANSACTION_WHERE(transaction_type) {
-    return db('transactions').sum('amount')
+    return await db('transactions').sum('amount')
     .where({ transaction_type })
     
 }
