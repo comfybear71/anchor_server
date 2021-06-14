@@ -79,8 +79,8 @@ async function GET_ALL_TRANSACTION_WHERE(transaction_type) {
     
 }
 
-function GET_WALLET_BALANCE(wallet) {
-    return db('transactions')
+async function GET_WALLET_BALANCE(wallet) {
+    return await db('transactions')
     .where({ wallet }).sum('amount')
 }
 
